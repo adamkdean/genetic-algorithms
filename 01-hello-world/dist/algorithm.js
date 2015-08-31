@@ -13,7 +13,7 @@ var _ = require('lodash');
 
 (function (exports) {
 
-    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
+    var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,! ',
         target = 'Hello world',
         mutationChance = 0.05,
         generationSize = 8,
@@ -95,13 +95,11 @@ var _ = require('lodash');
 
         // next we'll go through each gene and apply the mutationChance, if
         // mutation is successful, the gene will be replaced with the new gene
-        //console.log('pre-mutation  %s', child);
         for (var i = 0; i < child.length; i++) {
             if (Math.random() < mutationChance) {
                 child = child.substr(0, i) + generateString(1) + child.substr(i + 1);
             }
         }
-        //console.log('post-mutation %s (%s)', child, mCount);
 
         return child;
     };
