@@ -4,7 +4,7 @@ var _ = require('lodash');
 
 (function(exports) {
 
-    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,! ',
+    let alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
         target = 'Hello world',
         mutationChance = 0.05,
         generationSize = 8,
@@ -118,7 +118,9 @@ var _ = require('lodash');
 
     exports.run = function (opts) {
         // target: must consist of values available in variable `alphabet`
-        // generationSize: must be an even number, must be more than 2
+        // generationSize: must be an even number, only 8 seems to work well...
+        // generationCap: how many generations to run until breaking
+        // mutationChance: chance of a gene mutating, 0.00 to 1.00
         target = opts.target || target;
         generationSize = opts.generationSize || generationSize;
         generationCap = opts.generationCap || generationCap;
