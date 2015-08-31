@@ -12,6 +12,7 @@
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-babel": "^5.2.1",
-    "gulp-notice": "^1.0.3"
+    "gulp-notice": "^1.0.3",
+    "lodash": "^3.10.1"
   }
 }

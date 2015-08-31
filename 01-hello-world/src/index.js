@@ -1,7 +1,10 @@
 'use strict';
 
-var a = [4, 5, 6];
-var b = [1, 2, 3, ...a, 7, 8, 9];
+var algorithm = require('./algorithm');
 
-console.log('a', a);
-console.log('b', b);
+algorithm.run({
+    target: 'This is a very long sentence',
+    mutationChance: 0.1,
+    generationSize: 8,
+    generationCap: 1000000
+});
