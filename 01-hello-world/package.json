@@ -1,0 +1,17 @@
+{
+  "name": "01-hello-world",
+  "version": "1.0.0",
+  "description": "Hello world genetic algorithm",
+  "main": "dist/index.js",
+  "scripts": {
+    "prestart": "gulp",
+    "start": "node dist/index.js"
+  },
+  "author": "Adam K Dean <adamkdean@googlemail.com> (http://www.adamkdean.co.uk/)",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-babel": "^5.2.1",
+    "gulp-notice": "^1.0.3"
+  }
+}
