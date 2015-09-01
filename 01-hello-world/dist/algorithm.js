@@ -11,6 +11,11 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var _ = require('lodash');
 
+function sleepFor(sleepDuration) {
+    var now = new Date().getTime();
+    while (new Date().getTime() < now + sleepDuration) {/* do nothing */}
+}
+
 (function (exports) {
 
     var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ',
@@ -58,13 +63,13 @@ var _ = require('lodash');
 
         // now sort the generation and take the top half
         // and throw away the bottom half of individuals
-        generation = _.sortBy(generation, 'fitness').splice(0, generation.length / 2);
+        generation = _.sortBy(generation, 'fitness');
 
         // console log the most successful individual from this generation
-        console.log('[%s] Most promising individual: %s (%s)', index, generation[0].individual, generation[0].fitness);
+        console.log('[%s] Most promising individual: %s (%s), others: %s', index, generation[0].individual, generation[0].fitness, _.pluck(generation.slice(1), 'individual').join(' '));
 
         // remove fitness value now
-        generation = _.pluck(generation, 'individual');
+        generation = _.pluck(generation.splice(0, generation.length / 2), 'individual');
 
         // add surviving individuals to the next generation
         generations[index + 1] = [].concat(_toConsumableArray(generation));
@@ -118,8 +123,10 @@ var _ = require('lodash');
         for (var generationIndex = 0; generationIndex < generationCap; generationIndex++) {
             var thisGeneration = runGeneration(generationIndex);
             if (_.includes(thisGeneration, target)) {
-                console.log('Done!');
+                console.log('[%s] Target reached in %s generations', generationIndex, generationIndex);
                 break;
+            } else {
+                sleepFor(2);
             }
         }
     };
